@@ -1,5 +1,5 @@
-import { HStack, Image, Text } from "@chakra-ui/react";
-import logo from "../assets/Ag1_09.jpg";
+import { HStack, Image } from "@chakra-ui/react";
+import logo from "../assets/Logo.svg";
 import ColorSwitch from "./ColorSwitch";
 
 const Navbar = () => {
