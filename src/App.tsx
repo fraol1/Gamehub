@@ -39,7 +39,6 @@ const App = () => {
         <Heading className='mb-10'>{gameQuery.platform?.name}</Heading>
         <FilterPlatform
           onSelected={(platform) => setGameQuery({ ...gameQuery, platform })}
-          selectedPlatform={gameQuery.platform}
         />
         <GameGrid gameQuery={gameQuery} />
       </GridItem>

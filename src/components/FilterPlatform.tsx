@@ -5,11 +5,10 @@ import { Platform } from "../hooks/useGames";
 
 interface Props {
   onSelected: (platform: Platform) => void;
-  selectedPlatform: Platform | null;
 }
 
-const FilterPlatform = ({ onSelected, selectedPlatform }: Props) => {
-  const { data, error } = usePlatform(selectedPlatform);
+const FilterPlatform = ({ onSelected }: Props) => {
+  const { data, error } = usePlatform();
   if (error) return null;
   return (
     <Menu>
