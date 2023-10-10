@@ -31,10 +31,11 @@ const GenreList = ({ onSelected, selectedGenre }: Props) => {
         </Heading>
         {error && <p>{error}</p>}
         {data.map((genre) => (
-          <HStack key={genre.id} spacing={5} justifyContent={"space-between"}>
+          <HStack key={genre.id} spacing={2} justifyContent={"space-between"}>
             <Image
               boxSize={"35px"}
               borderRadius={10}
+              objectFit={"cover"}
               src={genre.image_background}
             />
             <Button
@@ -44,6 +45,8 @@ const GenreList = ({ onSelected, selectedGenre }: Props) => {
                 genre.name === selectedGenre?.name ? "bold" : "normal"
               }
               cursor='pointer'
+              whiteSpace={"normal"}
+              textAlign={"left"}
               variant='link'>
               {genre.name}
             </Button>

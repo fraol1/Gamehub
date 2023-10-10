@@ -1,11 +1,18 @@
-import { HStack, Image } from "@chakra-ui/react";
+import { HStack, Image, Link } from "@chakra-ui/react";
 import logo from "../assets/Logo.svg";
 import ColorSwitch from "./ColorSwitch";
+import SearchBox from "./SearchBox";
 
-const Navbar = () => {
+interface Props {
+  onSearchQuery: (searchQuery: string) => void;
+}
+const Navbar = ({ onSearchQuery }: Props) => {
   return (
-    <HStack justifyContent={"space-between"} margin={5}>
-      <Image src={logo} boxSize={"60px"} />
+    <HStack margin={5}>
+      <Link href='/'>
+        <Image src={logo} boxSize={"60px"} />
+      </Link>
+      <SearchBox onSearchQuery={onSearchQuery} />
       <ColorSwitch />
     </HStack>
   );
