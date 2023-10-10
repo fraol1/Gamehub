@@ -1,9 +1,28 @@
-import { HStack, Heading, Image, Text, VStack } from "@chakra-ui/react";
+import {
+  Button,
+  HStack,
+  Heading,
+  Image,
+  Spinner,
+  VStack,
+} from "@chakra-ui/react";
 
-import useGenre from "../hooks/useGenre";
+import useGenre, { Genre } from "../hooks/useGenre";
 
-const GenreList = () => {
-  const { data, error } = useGenre();
+interface Props {
+  onSelected: (genre: Genre) => void;
+  selectedGenre: Genre | null;
+}
+
+const GenreList = ({ onSelected, selectedGenre }: Props) => {
+  const { data, error, isLoading } = useGenre();
+
+  if (isLoading)
+    return (
+      <VStack justifyContent={"center"} alignItems={"center"}>
+        <Spinner />
+      </VStack>
+    );
   return (
     <>
       <VStack alignItems={"self-start"} padding={5}>
@@ -18,7 +37,16 @@ const GenreList = () => {
               borderRadius={10}
               src={genre.image_background}
             />
-            <Text>{genre.name}</Text>
+            <Button
+              onClick={() => onSelected(genre)}
+              fontSize='lg'
+              fontWeight={
+                genre.name === selectedGenre?.name ? "bold" : "normal"
+              }
+              cursor='pointer'
+              variant='link'>
+              {genre.name}
+            </Button>
           </HStack>
         ))}
       </VStack>
